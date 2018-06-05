@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CellService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_ICellContract_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2112/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2112/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2112/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Cell.Models.Entities" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICellContract_LoginClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginClient" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_LoginClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetAllClients_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllClients" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetAllClients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetAllLines_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLines" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetAllLines_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetInvoices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoices" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_ExportInvoicePdf_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportInvoicePdf" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_ExportInvoicePdf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportInvoicePdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_ExportInvoiceExcel_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportInvoiceExcel" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_ExportInvoiceExcel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportInvoiceExcelResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClient" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdateClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClient" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdateClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_RemoveClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClient" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_RemoveClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddClientLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClientLine" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddClientLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClientLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdateClientLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClientLine" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdateClientLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClientLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_RemoveClientLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClientLine" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_RemoveClientLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClientLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetClientTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientTypes" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetClientTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddClientType_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClientType" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddClientType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClientTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdateClientType_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClientType" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdateClientType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClientTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_RemoveClientType_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClientType" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_RemoveClientType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveClientTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetAllPackages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPackages" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetAllPackages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPackagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetOptimalPackage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOptimalPackage" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_GetOptimalPackage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOptimalPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddPackage_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPackage" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_AddPackage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdatePackage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePackage" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_UpdatePackage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePackageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_LoginUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUser" />
+  </wsdl:message>
+  <wsdl:message name="ICellContract_LoginUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICellContract">
+    <wsdl:operation name="LoginClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/LoginClient" message="tns:ICellContract_LoginClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/LoginClientResponse" message="tns:ICellContract_LoginClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClients">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/GetAllClients" message="tns:ICellContract_GetAllClients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/GetAllClientsResponse" message="tns:ICellContract_GetAllClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLines">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/GetAllLines" message="tns:ICellContract_GetAllLines_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/GetAllLinesResponse" message="tns:ICellContract_GetAllLines_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoices">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/GetInvoices" message="tns:ICellContract_GetInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/GetInvoicesResponse" message="tns:ICellContract_GetInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportInvoicePdf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/ExportInvoicePdf" message="tns:ICellContract_ExportInvoicePdf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/ExportInvoicePdfResponse" message="tns:ICellContract_ExportInvoicePdf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportInvoiceExcel">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/ExportInvoiceExcel" message="tns:ICellContract_ExportInvoiceExcel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/ExportInvoiceExcelResponse" message="tns:ICellContract_ExportInvoiceExcel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/AddClient" message="tns:ICellContract_AddClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/AddClientResponse" message="tns:ICellContract_AddClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/UpdateClient" message="tns:ICellContract_UpdateClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/UpdateClientResponse" message="tns:ICellContract_UpdateClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/RemoveClient" message="tns:ICellContract_RemoveClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/RemoveClientResponse" message="tns:ICellContract_RemoveClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClientLine">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/AddClientLine" message="tns:ICellContract_AddClientLine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/AddClientLineResponse" message="tns:ICellContract_AddClientLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientLine">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/UpdateClientLine" message="tns:ICellContract_UpdateClientLine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/UpdateClientLineResponse" message="tns:ICellContract_UpdateClientLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClientLine">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/RemoveClientLine" message="tns:ICellContract_RemoveClientLine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/RemoveClientLineResponse" message="tns:ICellContract_RemoveClientLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/GetClientTypes" message="tns:ICellContract_GetClientTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/GetClientTypesResponse" message="tns:ICellContract_GetClientTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClientType">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/AddClientType" message="tns:ICellContract_AddClientType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/AddClientTypeResponse" message="tns:ICellContract_AddClientType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientType">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/UpdateClientType" message="tns:ICellContract_UpdateClientType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/UpdateClientTypeResponse" message="tns:ICellContract_UpdateClientType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClientType">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/RemoveClientType" message="tns:ICellContract_RemoveClientType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/RemoveClientTypeResponse" message="tns:ICellContract_RemoveClientType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackages">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/GetAllPackages" message="tns:ICellContract_GetAllPackages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/GetAllPackagesResponse" message="tns:ICellContract_GetAllPackages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOptimalPackage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/GetOptimalPackage" message="tns:ICellContract_GetOptimalPackage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/GetOptimalPackageResponse" message="tns:ICellContract_GetOptimalPackage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPackage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/AddPackage" message="tns:ICellContract_AddPackage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/AddPackageResponse" message="tns:ICellContract_AddPackage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/UpdatePackage" message="tns:ICellContract_UpdatePackage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/UpdatePackageResponse" message="tns:ICellContract_UpdatePackage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICellContract/LoginUser" message="tns:ICellContract_LoginUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICellContract/LoginUserResponse" message="tns:ICellContract_LoginUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICellContract" type="tns:ICellContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LoginClient">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/LoginClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClients">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/GetAllClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLines">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/GetAllLines" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoices">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/GetInvoices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportInvoicePdf">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/ExportInvoicePdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportInvoiceExcel">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/ExportInvoiceExcel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClient">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/AddClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/UpdateClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClient">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/RemoveClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClientLine">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/AddClientLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientLine">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/UpdateClientLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClientLine">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/RemoveClientLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientTypes">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/GetClientTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClientType">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/AddClientType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientType">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/UpdateClientType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClientType">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/RemoveClientType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackages">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/GetAllPackages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOptimalPackage">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/GetOptimalPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPackage">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/AddPackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/UpdatePackage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <soap:operation soapAction="http://tempuri.org/ICellContract/LoginUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ICellContract" type="tns:ICellContract">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICellContract_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="LoginClient">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/LoginClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClients">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/GetAllClients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLines">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/GetAllLines" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoices">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/GetInvoices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportInvoicePdf">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/ExportInvoicePdf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportInvoiceExcel">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/ExportInvoiceExcel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClient">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/AddClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/UpdateClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClient">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/RemoveClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClientLine">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/AddClientLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientLine">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/UpdateClientLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClientLine">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/RemoveClientLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientTypes">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/GetClientTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClientType">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/AddClientType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientType">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/UpdateClientType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveClientType">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/RemoveClientType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPackages">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/GetAllPackages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOptimalPackage">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/GetOptimalPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPackage">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/AddPackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePackage">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/UpdatePackage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <soap12:operation soapAction="http://tempuri.org/ICellContract/LoginUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CellService">
+    <wsdl:port name="BasicHttpBinding_ICellContract" binding="tns:BasicHttpBinding_ICellContract">
+      <soap:address location="http://localhost:2112/Cell" />
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ICellContract" binding="tns:NetTcpBinding_ICellContract">
+      <soap12:address location="net.tcp://localhost:2113/Cell" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:2113/Cell</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-NH7TJ2T\benbi</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

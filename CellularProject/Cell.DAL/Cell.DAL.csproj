@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CFAC41F-C6D8-4517-B266-816A16023E8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cell.DAL</RootNamespace>
+    <AssemblyName>Cell.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBContext\CellDbContext.cs" />
+    <Compile Include="ClientRepository.cs" />
+    <Compile Include="ClientTypeRepository.cs" />
+    <Compile Include="Helpers\ModelExtensions.cs" />
+    <Compile Include="Migrations\201805271450106_InitialCreate.cs" />
+    <Compile Include="Migrations\201805271450106_InitialCreate.Designer.cs">
+      <DependentUpon>201805271450106_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805271456329_init.cs" />
+    <Compile Include="Migrations\201805271456329_init.Designer.cs">
+      <DependentUpon>201805271456329_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805271917460_init2.cs" />
+    <Compile Include="Migrations\201805271917460_init2.Designer.cs">
+      <DependentUpon>201805271917460_init2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805271927056_init3.cs" />
+    <Compile Include="Migrations\201805271927056_init3.Designer.cs">
+      <DependentUpon>201805271927056_init3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805281300301_init4.cs" />
+    <Compile Include="Migrations\201805281300301_init4.Designer.cs">
+      <DependentUpon>201805281300301_init4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805310801377_init5.cs" />
+    <Compile Include="Migrations\201805310801377_init5.Designer.cs">
+      <DependentUpon>201805310801377_init5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806030726116_init6.cs" />
+    <Compile Include="Migrations\201806030726116_init6.Designer.cs">
+      <DependentUpon>201806030726116_init6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806031134194_init7.cs" />
+    <Compile Include="Migrations\201806031134194_init7.Designer.cs">
+      <DependentUpon>201806031134194_init7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806031135597_init8.cs" />
+    <Compile Include="Migrations\201806031135597_init8.Designer.cs">
+      <DependentUpon>201806031135597_init8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806031221499_init9.cs" />
+    <Compile Include="Migrations\201806031221499_init9.Designer.cs">
+      <DependentUpon>201806031221499_init9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806041001177_init10.cs" />
+    <Compile Include="Migrations\201806041001177_init10.Designer.cs">
+      <DependentUpon>201806041001177_init10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CallDb.cs" />
+    <Compile Include="Models\ClientDb.cs" />
+    <Compile Include="Models\ClientTypeDb.cs" />
+    <Compile Include="Models\LineDb.cs" />
+    <Compile Include="Models\PackageDb.cs" />
+    <Compile Include="Models\PackageIncludeDb.cs" />
+    <Compile Include="Models\PaymentDb.cs" />
+    <Compile Include="Models\SelectedNumbersDb.cs" />
+    <Compile Include="Models\SMSDb.cs" />
+    <Compile Include="Models\UserDb.cs" />
+    <Compile Include="PackageRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cell.Models\Cell.Common.csproj">
+      <Project>{5e01d89c-889c-4b62-b5f9-4016b3d2084f}</Project>
+      <Name>Cell.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805271450106_InitialCreate.resx">
+      <DependentUpon>201805271450106_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805271456329_init.resx">
+      <DependentUpon>201805271456329_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805271917460_init2.resx">
+      <DependentUpon>201805271917460_init2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805271927056_init3.resx">
+      <DependentUpon>201805271927056_init3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281300301_init4.resx">
+      <DependentUpon>201805281300301_init4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805310801377_init5.resx">
+      <DependentUpon>201805310801377_init5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806030726116_init6.resx">
+      <DependentUpon>201806030726116_init6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806031134194_init7.resx">
+      <DependentUpon>201806031134194_init7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806031135597_init8.resx">
+      <DependentUpon>201806031135597_init8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806031221499_init9.resx">
+      <DependentUpon>201806031221499_init9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041001177_init10.resx">
+      <DependentUpon>201806041001177_init10.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

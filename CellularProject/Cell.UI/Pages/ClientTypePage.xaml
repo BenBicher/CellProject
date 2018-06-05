@@ -1,0 +1,113 @@
+﻿<Page x:Class="Cell.UI.Pages.ClientTypePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cell.UI.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClientTypePage">
+
+    <Page.DataContext>
+        <local:ClientTypePageViewModel/>
+    </Page.DataContext>
+    
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ComboBox Name="IdComboBox" 
+                  Grid.Column="2" 
+                  Grid.ColumnSpan="2"
+                  Grid.Row="1" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Bottom" 
+                  Width="120" 
+                  ItemsSource="{Binding ClientTypes}" 
+                  DisplayMemberPath="TypeName" 
+                  SelectedValuePath="TypeName" 
+                  SelectedValue="{Binding ClientType.TypeName}"/>
+        <Label Content="ClientType"
+               Grid.Column="1"
+               Grid.Row="0"
+               FontSize="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Grid.RowSpan="2"
+               Grid.ColumnSpan="2"/>
+        <Label Content="TypeName: "
+               Grid.Column="1"
+               Grid.Row="1"
+               FontSize="18"
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Left"/>
+        <Label Content="MinutePrice: "
+               Grid.Column="1"
+               Grid.Row="2"
+               FontSize="18"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Left"/>
+        <Label Content="SmsPrice: "
+               Grid.Column="1"
+               Grid.Row="3"
+               FontSize="18"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"/>
+        <TextBox Text="{Binding ClientType.TypeName, Mode=TwoWay}"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 FontSize="14"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center"
+                 Height="20"
+                 Width="150"
+                 Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding ClientType.MinutePrice, StringFormat=N2, Mode=TwoWay}"
+                 Grid.Column="1"
+                 Grid.Row="2"
+                 FontSize="14"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Height="20" Width="150"
+                 Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding ClientType.SmsPrice, StringFormat=N2, Mode=TwoWay}"
+                 Grid.Column="1"
+                 Grid.Row="3"
+                 FontSize="14"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Center"
+                 Height="20"
+                 Width="150"
+                 Grid.ColumnSpan="2"/>
+        <Button Grid.Column="1" 
+                Grid.Row="5" 
+                Content="Save" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Width="100"
+                Command="{Binding SubmitSave}"/>
+        <Button Grid.Column="2" 
+                Grid.Row="5" 
+                Content="Update" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Width="100"
+                Command="{Binding SubmitUpdate}"/>
+        <Button Grid.Column="3" 
+                Grid.Row="5" 
+                Content="Delete" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                Width="100"
+                Command="{Binding SubmitDelete}"/>
+    </Grid>
+</Page>

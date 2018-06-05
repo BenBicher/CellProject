@@ -1,0 +1,79 @@
+﻿<Page x:Class="Cell.UI.Pages.LoginClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cell.UI.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginClient">
+    
+    <Page.DataContext>
+        <local:LoginClientViewModel />
+    </Page.DataContext>
+    
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="Client Login"
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="0"
+               Grid.ColumnSpan="3"
+               FontSize="59"
+               FontStyle="Italic"/>
+        <Label Content="Client ID: "
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center"
+               Grid.Column="1"
+               Grid.Row="1" 
+               FontSize="18"/>
+        <Label Content="Number: "
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top"
+               Grid.Column="1" 
+               Grid.Row="2"
+               FontSize="18"/>
+        <TextBox HorizontalAlignment="Center"
+                 Height="30"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="250"
+                 FontSize="18"
+                 Grid.Row="2"
+                 Grid.Column="2"
+                 Grid.ColumnSpan="2"
+                 Text="{Binding ContactNumber}"/>
+        <TextBox HorizontalAlignment="Center"
+                 TextWrapping="Wrap"
+                 Height="30"
+                 VerticalAlignment="Center"
+                 Width="250"
+                 FontSize="18"
+                 Grid.Column="2"
+                 Grid.Row="1"
+                 Grid.ColumnSpan="2"
+                 Text="{Binding ClientId}"/>
+        <Button Content="Login"
+                Width="150"
+                Height="40"
+                FontSize="20"
+                Grid.Column="3"
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                Command="{Binding SubmitLogin}"/>
+    </Grid>
+</Page>
